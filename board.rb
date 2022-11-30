@@ -17,11 +17,17 @@ class Board
     end
 
     def move_piece(color, start_pos, end_pos)
-        if self[start_pos] == @null_piece
+        if [start_pos] == @null_piece
             raise "No piece at start pos"
+        elsif [start_pos] == self
+            [self]=end_pos
         end
 
-        if self[]=(start_pos, end_pos).nil?    # nil? trying to check if the end pos is valid
+        # if self[]=(start_pos, end_pos).nil?    # nil? trying to check if the end pos is valid
+        if [end_pos] == @null_piece
+            self[]=(start_pos, end_pos)
+        else
+            raise "Not valid position"
         end
     end
 
