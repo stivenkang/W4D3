@@ -1,3 +1,4 @@
+require "byebug"
 class Board
 
     #starting with nil as the position on the board 
@@ -16,9 +17,9 @@ class Board
         @grid[row][col] = val
     end
 
-    #self refers to the current class instance 
+    #self refers to the current class instance explore line 23
     def move_piece(start_pos, end_pos)
-        if [start_pos] == nil
+        if self[start_pos] == nil
             raise "No piece at start pos"
         end
 
@@ -28,15 +29,16 @@ class Board
         if end_pos[0] >= 8 || end_pos[1] >= 8
             raise "Not valid position"
         else 
-            @grid[start_pos] = end_pos
+            self[start_pos] = end_pos
         end
     end
 end
 
 
 class Piece
-    def initialize(name, location)
-        @name = name
-        @location = location
+    def initialize(color, board, pos)
+        @color = color
+        @board = Board.new
+        @pos = []
     end
 end
