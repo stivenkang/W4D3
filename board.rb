@@ -4,7 +4,7 @@ class Board
     #starting with nil as the position on the board 
     attr_reader :grid
     def initialize
-        @grid = Array.new(8) { Array.new(8, nil)}
+        @grid = Array.new(8) { Array.new(8, nul_piece)}
     end
 
     def [](pos)
@@ -19,7 +19,7 @@ class Board
 
     #self refers to the current class instance explore line 23
     def move_piece(start_pos, end_pos)
-        if self[start_pos] == nil
+        if self[start_pos] == nul_piece
             raise "No piece at start pos"
         end
 

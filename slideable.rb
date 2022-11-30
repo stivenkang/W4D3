@@ -36,14 +36,9 @@ module Slideable
     def moves
         moves = []
 
-        # @grid.each do |row|
-        #     row.each do |pos|
-
-        #     end 
-        # end 
-
-        self.move_dirs
-        grow_unblocked_moves_in_dir()
+        self.move_dirs.each do |pos|
+            moves << grow_unblocked_moves_in_dir(pos[0], pos[1])
+        end
         #current position diagnolly
         moves
     end
@@ -69,6 +64,10 @@ module Slideable
         # return the final moves array
     def grow_unblocked_moves_in_dir(dx, dy)
         moves = []
+        current_pos = self[pos] # supposed to be current position of piece
+        current_row = current_pos[0]
+        current_col = current_pos[1]
+        until (current_row == 7 || current_col == 7) || (@grid[pos] != nul_piece )
 
         moves
     end
