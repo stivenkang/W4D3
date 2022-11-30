@@ -2,25 +2,27 @@ module Slideable
 
     #HORIZONTAL DIRS stores an array of horizontal directions
     HORIZONTAL_DIRS = [
-        [:dx, :dy], #left
-        [:dx, :dy], #right
-        [:dx, :dy], #up
-        [:dx, :dy] #down
+        [-1, 0], #left
+        [1, 0], #right
+        [0, 1], #up
+        [0, -1] #down
     ].freeze
 
     # DIAGONAL_DIRS stores an array of diagonal directions
     DIAGONAL_DIRS = [
-        [:dx, :dy], #up + left
-        [:dx, :dy], #up + right
-        [:dx, :dy], #down + left
-        [:dx, :dy] #down + right
+        [-1, 1], #up + left
+        [1, 1], #up + right
+        [-1, -1], #down + left
+        [1, -1] #down + right
     ].freeze
 
     #getters to access them
     def horizontal_dirs
+        HORIZONTAL_DIRS
     end
 
     def diagonal_dirs
+        DIAGONAL_DIRS
     end
 
     # should return an array of moves the piece can move on the board
@@ -31,7 +33,19 @@ module Slideable
             # and add them to your moves array
             # (use the grow_unblocked_moves_in_dir helper method)
     # return the final array of moves (containing all possible moves in all directions)
-    def move
+    def moves
+        moves = []
+
+        # @grid.each do |row|
+        #     row.each do |pos|
+
+        #     end 
+        # end 
+
+        self.move_dirs
+        grow_unblocked_moves_in_dir()
+        #current position diagnolly
+        moves
     end
 
     private
@@ -54,7 +68,9 @@ module Slideable
             #if the next position is occupied with a piece of the same color, stop looping
         # return the final moves array
     def grow_unblocked_moves_in_dir(dx, dy)
+        moves = []
 
+        moves
     end
 end
 

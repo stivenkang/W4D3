@@ -5,15 +5,15 @@ class Rook < Piece
     include Slideable
 
     def symbol
-        :R
+        "♖".colorize(color)
     end
     #"symbol".colorize(color)
 
-    private  # vs protected
+    protected  # vs  private
 
     # return the directions in which a Rook can move
     # Rook moves horizontally and vertically
     def move_dirs
-        
+        self.horizontal_dirs
     end
 end
