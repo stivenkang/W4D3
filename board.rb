@@ -33,12 +33,3 @@ class Board
         end
     end
 end
-
-
-class Piece
-    def initialize(color, board, pos)
-        @color = color
-        @board = Board.new
-        @pos = []
-    end
-end
