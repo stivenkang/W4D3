@@ -1,9 +1,9 @@
 class Board
 
-    attr_reader :grid, :null_piece
-    def initialize(grid, null_piece)
+    #starting with nil as the position on the board 
+    attr_reader :grid
+    def initialize
         @grid = Array.new(8) { Array.new(8, nil)}
-        @null_piece = null_piece
     end
 
     def [](pos)
@@ -16,21 +16,21 @@ class Board
         @grid[row][col] = val
     end
 
-    def move_piece(color, start_pos, end_pos)
-        if [start_pos] == @null_piece
+    #self refers to the current class instance 
+    def move_piece(start_pos, end_pos)
+        if [start_pos] == nil
             raise "No piece at start pos"
-        elsif [start_pos] == self
-            [self]=end_pos
         end
 
         # if self[]=(start_pos, end_pos).nil?    # nil? trying to check if the end pos is valid
-        if [end_pos] == @null_piece
-            self[]=(start_pos, end_pos)
-        else
+        # checking to see if the positon is out of bounds (take in refernce the board size)
+        # [0, 0] 
+        if end_pos[0] >= 8 || end_pos[1] >= 8
             raise "Not valid position"
+        else 
+            @grid[start_pos] = end_pos
         end
     end
-
 end
 
 
